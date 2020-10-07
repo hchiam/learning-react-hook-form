@@ -25,4 +25,8 @@ return (
 );
 ```
 
-Or see [`/demo-app/src/App.js`](https://github.com/hchiam/learning-react-hook-form/blob/master/demo-app/src/App.js) for a fuller, tested working example (also uses `errors` for error messages, and also uses `watch`).
+Or see [`/demo-app/src/App.js`](https://github.com/hchiam/learning-react-hook-form/blob/master/demo-app/src/App.js) for a fuller, tested working example (also uses `errors` for error messages, and also uses `watch`):
+
+```bash
+cd demo-app && yarn start
+```
