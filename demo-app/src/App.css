@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  /* just for simplicity of the demo: */
+  display: block;
+}
+
+/* to make the demo look a little nicer: */
+body {
+  margin: 1rem;
+  padding: 1rem;
+  place-items: center;
+  display: grid;
+  height: 80vh;
+  background: black;
+  color: white;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
+input::placeholder {
+  font-style: italic;
+}

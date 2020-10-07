@@ -1,25 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import { useForm } from "react-hook-form";
 
 function App() {
+  const { register, handleSubmit, watch, errors } = useForm();
+
+  const onSubmit = (data) => alert(JSON.stringify(data, null, 4));
+
+  const watchAValue = watch("minimalExampleField"); // watch value of input with this name="..."
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          name="minimalExampleField"
+          placeholder="minimal example field"
+          ref={register}
+        />
+        <input
+          name="firstName"
+          placeholder="first name"
+          ref={register({ required: true, maxLength: 20 })}
+        />
+        {errors.firstName && "First name is required (max 20 characters)"}
+        <input
+          name="lastName"
+          placeholder="last name"
+          ref={register({ required: true, pattern: /^[A-Za-z]+$/i })}
+        />
+        {errors.lastName && "Last name is required (letters only)"}
+        <input
+          name="age"
+          placeholder="age"
+          type="number"
+          ref={register({ required: true, min: 18, max: 99 })}
+        />
+        {errors.age && "Age must be 18-99 inclusive"}
+        <input type="submit" />
+      </form>
+      {watchAValue && (
+        <p id="test">
+          Watching some value:{" "}
+          <span style={{ color: "yellow", fontWeight: "bold" }}>
+            {" "}
+            {watchAValue}
+          </span>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      )}
+    </>
   );
 }
 
